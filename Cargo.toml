@@ -1,0 +1,40 @@
+[package]
+name = "luckee-incentive"
+version = "0.1.0"
+edition = "2021"
+authors = ["Luckee Team"]
+description = "Luckee Incentive Contract for reward distribution"
+license = "MIT"
+keywords = ["incentive", "cosmwasm", "reward", "distribution"]
+categories = ["blockchain", "incentive"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["std"]
+std = []
+library = []
+
+[dependencies]
+# Core dependencies (参考NFT合约配置)
+cosmwasm-schema = { version = "2.2.2", default-features = false }
+cosmwasm-std = "2.2.2"
+cw-storage-plus = "2"
+cw2 = "2"
+cw-utils = "2.0"
+schemars = "0.8"
+serde = { version = "1.0", default-features = false, features = ["derive"] }
+serde-wasm-bindgen = "0.6"
+serde_json = "1.0"
+thiserror = "1.0"
+
+# Enable alloc feature for ed25519-zebra to satisfy cosmwasm-crypto imports
+ed25519-zebra = { version = "4.1.0", features = ["alloc"] }
+sha2 = { version = "0.10", default-features = false }
+hex = { version = "0.4", default-features = false }
+
+[dev-dependencies]
+luckee-incentive = { path = ".", features = [] }
+cw-multi-test = "2.0"
+proptest = "1.0"
